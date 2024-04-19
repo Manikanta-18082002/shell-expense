@@ -45,7 +45,7 @@ VALIDATE $? "Starting MY-SQL Server....."
 
 #Below code will be useful for Idempotent nature
 mysql -h db.dawsmani.site -uroot -pExpenseApp@1 -e 'show databases;' # Checking does Passwoed is setup already?
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then 
      mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
      VALIDATE $? "Setting up MYSQL Root Password"
