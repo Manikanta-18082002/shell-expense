@@ -13,7 +13,7 @@ Y="\e[33m"
 N="\e[0m"
 
 echo "Please enter DB Password"
-read -s mysql-root-password
+read -s mysql_root_password #No hypens -
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -47,10 +47,10 @@ VALIDATE $? "Starting MY-SQL Server....."
 
 
 #Below code will be useful for Idempotent nature
-mysql -h db.dawsmani.site -uroot -p${mysql-root-password} -e 'show databases;' &>>LOGFILE# Checking does Passwoed is setup already?
+mysql -h db.dawsmani.site -uroot -p${mysql_root_password} -e 'show databases;' &>>LOGFILE# Checking does Passwoed is setup already?
 if [ $? -ne 0 ]
 then 
-     mysql_secure_installation --set-root-pass ${mysql-root-password} &>>$LOGFILE
+     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
      VALIDATE $? "Setting up MYSQL Root Password"
 else
     echo -e "MYSQL Password ALready Setup... $Y SKIPPING $N"
