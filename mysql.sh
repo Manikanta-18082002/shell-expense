@@ -45,14 +45,13 @@ VALIDATE $? "Starting MY-SQL Server....."
 # mysql_secure_installation --set-root-pass ExpenseApp@1 &>>LOGFILE
 # VALIDATE $? "Setting up Root password..."
 
-
 #Below code will be useful for idempotent nature
 # Shell script is not Idempotent
 
 mysql -h db.dawsmani.site -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE  #Checking deos password is already SET-UP
-if [ $? -ne 0 ]
+if [ $? -ne 0 ]  # Then set the password
 then
-    mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
+    mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE #Setting up give password: ExpenseApp@1
     VALIDATE $? "MySQL Root password Setup"
 else
     echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
