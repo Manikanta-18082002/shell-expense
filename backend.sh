@@ -40,7 +40,8 @@ VALIDATE $? "Enabling NodeJS"
 dnf install nodejs -y &>>LOGFILE
 VALIDATE $? "Installing NodeJS"
 
-useradd expense  &>>LOGFILE
+# useradd expense
+id expense  &>>LOGFILE # Checking expense user exists already
 if [ $? -ne 0 ]
 then
     useradd expense  &>>LOGFILE
