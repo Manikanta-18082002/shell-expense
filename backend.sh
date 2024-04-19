@@ -44,17 +44,17 @@ useradd expense
 VALIDATE $? "Adding User"
 
 
-mkdir /app
+# mkdir /app
 
 
-curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+# curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
 
 
-cd /app
+# cd /app
 
 
 
-unzip /tmp/backend.zip
+# unzip /tmp/backend.zip
 
 
 
