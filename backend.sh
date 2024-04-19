@@ -40,8 +40,15 @@ VALIDATE $? "Enabling NodeJS"
 dnf install nodejs -y &>>LOGFILE
 VALIDATE $? "Installing NodeJS"
 
-useradd expense
-VALIDATE $? "Adding User"
+useradd expense  &>>LOGFILE
+if [ $? -ne 0 ]
+then
+    useradd expense  &>>LOGFILE
+    VALIDATE $? "Created Expense User"
+else
+    echo -e "Expense user already exists...$Y SKIPING $N"
+fi
+
 
 
 # mkdir /app
