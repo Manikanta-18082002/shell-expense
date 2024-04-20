@@ -89,7 +89,7 @@ VALIDATE $? "Copied backend service"
  systemctl enable backend &>>$LOGFILE
 VALIDATE $? "Enabling backend"
 
- dnf install mysql -y &>>$LOGFILE
+ dnf install mysql -y &>>$LOGFILE #TO connect to DB (This is MYSQL Client S/W)
 VALIDATE $? "Installing MYSQL Client"
 
 mysql -h db.dawsmani.site -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
