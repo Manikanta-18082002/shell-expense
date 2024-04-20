@@ -40,31 +40,40 @@ VALIDATE $? "Enabling NodeJS"
 dnf install nodejs -y &>>LOGFILE
 VALIDATE $? "Installing NodeJS"
 
-useradd expense
-VALIDATE $? "Adding user"
-# id expense  &>>LOGFILE # Checking expense user exists already
-# if [ $? -ne 0 ]
-# then
-#     useradd expense  &>>LOGFILE
-#     VALIDATE $? "Created Expense User"
-# else
-#     echo -e "Expense user already exists...$Y SKIPING $N"
-# fi
+# useradd expense
+# VALIDATE $? "Adding user" 
+#
+
+id expense  &>>LOGFILE # Checking expense user exists already
+if [ $? -ne 0 ] #If not exist then add user
+then
+    useradd expense  &>>LOGFILE
+    VALIDATE $? "Created Expense User"
+else
+    echo -e "Expense user already exists...$Y SKIPING $N"
+fi
+
+mkdir -p /app # -p: if not exist create, else nothing todo silent
+VALIDATE $? "Creating App directory"
 
 
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+VALIDATE $? "Downloading backend code"
 
-# mkdir /app
+cd /app
 
+unzip /tmp/backend.zip
+VALIDATE $? "Extracted backend code"
 
-# curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+npm install
+VALIDATE $? "Installing nodejs Dependencies"
 
+# vim /etc/systemd/system/backend.service
+#1) Dosen't use VIM by Shell scripting 
+#2) Instead use <file>.service file
 
-# cd /app
-
-
-
-# unzip /tmp/backend.zip
-
+#Giving absolute path will not get much errors...
+cp /home/ec2-user/shell-expense/backend.service /etc/systemd/system/backend.service
 
 
 
