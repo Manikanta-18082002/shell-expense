@@ -101,6 +101,8 @@ VALIDATE $? "Restarting Backend"
 # netstat -lntp
 # telnet db.dawsmani.site 3306
 
+#sudo su
+#labauto
 
 
 
