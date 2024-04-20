@@ -98,6 +98,8 @@ VALIDATE $? "Schema Loading"
 systemctl restart backend &>>$LOGFILE
 VALIDATE $? "Restarting Backend"
 
+# netstat -lntp
+# telnet db.dawsmani.site 3306
 
 
 

@@ -62,9 +62,8 @@ VALIDATE $? "Copied Expense conf"
 systemctl restart nginx &>>$LOGFILE
 VALIDATE $? "Restarting Nginx"
 
-
-
-
+# telnet backend.dawsmani.site 8080
+# Use: sudo systemctl start backend (When text entered in (Website) Amount Place )
 
 
 
