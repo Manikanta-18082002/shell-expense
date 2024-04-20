@@ -13,7 +13,7 @@ Y="\e[33m"
 N="\e[0m"
 
 echo "Please enter DB Password"
-read -s mysql_root_password #No hypens -
+read  mysql_root_password #No hypens -
 
 VALIDATE(){
     if [ $1 -ne 0 ]
