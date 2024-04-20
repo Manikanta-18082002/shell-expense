@@ -65,7 +65,8 @@ VALIDATE $? "Downloading backend code"
 
 cd /app
 
-unzip /tmp/backend.zip  &>>$LOGFILE
+rm -rf /app/* # start means -> Removing existing content inside this folder (If no this line below error)
+unzip /tmp/backend.zip  &>>$LOGFILE #Archive:  /tmp/backend.zip -> (replace DbConfig.js? [y]es, [n]o, [A]ll, [N]one, [r]ename:)
 VALIDATE $? "Extracted backend code"
 
 npm install  &>>$LOGFILE
@@ -94,7 +95,7 @@ VALIDATE $? "Installing MYSQL Client"
 mysql -h db.dawsmani.site -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
 VALIDATE $? "Schema Loading"
 
-systemctl restart backend &>>#LOGFILE
+systemctl restart backend &>>$LOGFILE
 VALIDATE $? "Restarting Backend"
 
 
