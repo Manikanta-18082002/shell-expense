@@ -102,13 +102,14 @@ VALIDATE $? "Restarting Backend"
 # telnet db.dawsmani.site 3306
 
 #sudo su
-#labauto
+# #labauto
 
+#  You can find all the scripts in following location
+# https://github.com/learndevopsonline/labautomation/tree/master/tools
 
+#Above is RHEL -Sir's AMI (Total 67 Tools)
 
-
-
-
+# To restart Passwd: alter user 'root'@'localhost' IDENTIFIED BY 'MyNewPass'
 
 
 
